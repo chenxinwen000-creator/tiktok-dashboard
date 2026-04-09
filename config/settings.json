@@ -1,0 +1,39 @@
+{
+  "app": {
+    "name": "TikTok电商数据助手",
+    "version": "1.0.0",
+    "description": "局域网专用的TikTok店铺数据监控工具"
+  },
+  "dashboard": {
+    "refreshInterval": 300000,
+    "maxAlerts": 20,
+    "dataRetentionDays": 30,
+    "enableRealTime": true
+  },
+  "tiktok": {
+    "apiEndpoint": "http://localhost:3000/api/tiktok",
+    "mockData": true,
+    "updateFrequency": "5m",
+    "metrics": ["sales", "visitors", "conversion", "engagement", "revenue"]
+  },
+  "ui": {
+    "theme": "dark",
+    "primaryColor": "#FF0050",
+    "secondaryColor": "#00F2EA",
+    "animationSpeed": "normal",
+    "enableEffects": true
+  },
+  "storage": {
+    "type": "local",
+    "path": "./data",
+    "backup": true,
+    "backupInterval": "1d"
+  },
+  "features": {
+    "alerts": true,
+    "charts": true,
+    "export": true,
+    "notifications": true,
+    "quickActions": true
+  }
+}

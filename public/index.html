@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛍️ TikTok电商数据助手</title>
+    <link rel="stylesheet" href="/src/styles/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛍️</text></svg>">
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- 背景装饰元素 -->
+    <div class="bg-elements">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
+        <div class="bg-circle circle-4"></div>
+    </div>
+    
+    <style>
+        .bg-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--secondary), transparent);
+            opacity: 0.1;
+            filter: blur(40px);
+        }
+        
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 15%;
+            background: radial-gradient(circle, var(--accent), transparent);
+            animation: float 6s ease-in-out infinite reverse;
+        }
+        
+        .circle-3 {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 20%;
+            background: radial-gradient(circle, var(--success), transparent);
+            animation: float 10s ease-in-out infinite;
+        }
+        
+        .circle-4 {
+            width: 250px;
+            height: 250px;
+            top: 30%;
+            right: 30%;
+            background: radial-gradient(circle, #764ba2, transparent);
+            animation: float 7s ease-in-out infinite reverse;
+        }
+    </style>
+</body>
+</html>
