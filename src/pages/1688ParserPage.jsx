@@ -110,7 +110,7 @@ const FieldMappingCard = ({ source, target, mapped = true }) => {
   );
 };
 
-const 1688ParserPage = () => {
+const Parser1688Page = () => {
   const [url, setUrl] = useState('');
   const [isExtracting, setIsExtracting] = useState(false);
   const [extractionProgress, setExtractionProgress] = useState(0);
@@ -542,4 +542,4 @@ const 1688ParserPage = () => {
   );
 };
 
-export default 1688ParserPage;
+export default Parser1688Page;

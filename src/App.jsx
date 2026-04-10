@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Dashboard from './pages/Dashboard';
-import 1688ParserPage from './pages/1688ParserPage';
+import Parser1688Page from './pages/1688ParserPage';
 import './styles/globals.css';
 
 function App() {
@@ -74,7 +74,7 @@ function App() {
       <Navigation />
       <div className="pt-24 px-4">
         {currentPage === 'dashboard' && <Dashboard />}
-        {currentPage === '1688' && <1688ParserPage />}
+        {currentPage === '1688' && <Parser1688Page />}
       </div>
     </div>
   );
