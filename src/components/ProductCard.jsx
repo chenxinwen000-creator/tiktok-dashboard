@@ -1,10 +1,10 @@
 import React from 'react';
-import { FaFire, FaStar, FaShoppingCart, FaEye } from 'react-icons/fa';
+import { FaEye, FaFire, FaShoppingCart, FaStar } from 'react-icons/fa';
 
 const ProductCard = ({ rank }) => {
   const products = [
     {
-      name: '潮流印花T恤',
+      name: '潮流印花短袖 T 恤',
       category: '服装',
       sales: 1248,
       revenue: 62400,
@@ -22,7 +22,7 @@ const ProductCard = ({ rank }) => {
       views: 35600
     },
     {
-      name: '运动瑜伽裤',
+      name: '运动瑜伽套装',
       category: '运动服饰',
       sales: 756,
       revenue: 45360,
@@ -38,94 +38,88 @@ const ProductCard = ({ rank }) => {
     'from-gray-400 to-gray-600',
     'from-amber-700 to-amber-900'
   ];
+  const stockRatio = Math.min(100, product.stock);
 
   return (
     <div className="group relative">
-      <div className="glass-card p-4 hover:border-secondary/50 transition-all">
-        <div className="flex items-start space-x-3">
-          {/* 排名徽章 */}
-          <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${rankColors[rank - 1]} flex items-center justify-center flex-shrink-0`}>
-            <span className="text-white font-bold text-lg">#{rank}</span>
+      <div className="glass-card p-4 transition-all hover:border-secondary/50">
+        <div className="flex items-start gap-3">
+          <div className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br ${rankColors[rank - 1]}`}>
+            <span className="text-lg font-bold text-white">#{rank}</span>
           </div>
-          
-          {/* 商品信息 */}
+
           <div className="flex-1">
-            <div className="flex items-start justify-between">
+            <div className="flex items-start justify-between gap-3">
               <div>
-                <h3 className="font-semibold text-white group-hover:text-secondary transition-colors">
+                <h3 className="font-semibold text-white transition-colors group-hover:text-secondary">
                   {product.name}
                 </h3>
-                <div className="flex items-center space-x-2 mt-1">
-                  <span className="text-xs px-2 py-1 bg-white/10 rounded">{product.category}</span>
-                  {rank === 1 && (
-                    <span className="text-xs px-2 py-1 bg-red-500/20 text-red-400 rounded flex items-center">
+                <div className="mt-1 flex items-center gap-2">
+                  <span className="rounded bg-white/10 px-2 py-1 text-xs">{product.category}</span>
+                  {rank === 1 ? (
+                    <span className="flex items-center rounded bg-red-500/20 px-2 py-1 text-xs text-red-400">
                       <FaFire className="mr-1" /> 爆款
                     </span>
-                  )}
+                  ) : null}
                 </div>
               </div>
-              
+
               <div className="text-right">
-                <div className="text-lg font-bold text-white">¥{(product.revenue / 100).toLocaleString()}</div>
+                <div className="text-lg font-bold text-white">¥{product.revenue.toLocaleString()}</div>
                 <div className="text-xs text-gray-400">销售额</div>
               </div>
             </div>
-            
-            {/* 数据指标 */}
-            <div className="grid grid-cols-4 gap-2 mt-3">
+
+            <div className="mt-3 grid grid-cols-4 gap-2">
               <div className="text-center">
-                <div className="flex items-center justify-center space-x-1 text-sm">
+                <div className="flex items-center justify-center gap-1 text-sm">
                   <FaShoppingCart className="text-green-400" />
                   <span className="font-semibold text-white">{product.sales}</span>
                 </div>
-                <div className="text-xs text-gray-400 mt-1">销量</div>
+                <div className="mt-1 text-xs text-gray-400">销量</div>
               </div>
-              
               <div className="text-center">
-                <div className="flex items-center justify-center space-x-1 text-sm">
+                <div className="flex items-center justify-center gap-1 text-sm">
                   <FaStar className="text-yellow-400" />
                   <span className="font-semibold text-white">{product.rating}</span>
                 </div>
-                <div className="text-xs text-gray-400 mt-1">评分</div>
+                <div className="mt-1 text-xs text-gray-400">评分</div>
               </div>
-              
               <div className="text-center">
-                <div className="flex items-center justify-center space-x-1 text-sm">
+                <div className="flex items-center justify-center gap-1 text-sm">
                   <FaEye className="text-blue-400" />
                   <span className="font-semibold text-white">{(product.views / 1000).toFixed(1)}k</span>
                 </div>
-                <div className="text-xs text-gray-400 mt-1">浏览</div>
+                <div className="mt-1 text-xs text-gray-400">浏览</div>
               </div>
-              
               <div className="text-center">
                 <div className="text-sm font-semibold text-white">{product.stock}</div>
-                <div className="text-xs text-gray-400 mt-1">库存</div>
+                <div className="mt-1 text-xs text-gray-400">库存</div>
               </div>
             </div>
-            
-            {/* 库存进度条 */}
+
             <div className="mt-3">
-              <div className="flex items-center justify-between text-xs text-gray-400 mb-1">
+              <div className="mb-1 flex items-center justify-between text-xs text-gray-400">
                 <span>库存状态</span>
-                <span>{Math.round((product.stock / 100) * 100)}%</span>
+                <span>{stockRatio}%</span>
               </div>
               <div className="progress-bar">
-                <div 
+                <div
                   className="progress-fill"
-                  style={{ 
-                    width: `${Math.round((product.stock / 100) * 100)}%`,
-                    background: product.stock < 20 
-                      ? 'linear-gradient(90deg, #FF3B30, #FF9500)'
-                      : 'linear-gradient(90deg, #25D366, #34C759)'
+                  style={{
+                    width: `${stockRatio}%`,
+                    background:
+                      product.stock < 20
+                        ? 'linear-gradient(90deg, #FF3B30, #FF9500)'
+                        : 'linear-gradient(90deg, #25D366, #34C759)'
                   }}
-                ></div>
+                />
               </div>
             </div>
           </div>
         </div>
-        
-        {/* 悬停效果 */}
-        <div className="absolute inset-0 rounded-xl border border-transparent group-hover:border-secondary/30 transition-colors pointer-events-none"></div>
+
+        <div className="pointer-events-none absolute inset-0 rounded-xl border border-transparent transition-colors group-hover:border-secondary/30" />
       </div>
     </div>
   );
